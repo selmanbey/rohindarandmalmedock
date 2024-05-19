@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 
-	let timeLeft = 180; // Initial time in seconds (3 minutes)
+	export let startFrom: number = 180;
+
+	let timeLeft = startFrom; // Initial time in seconds (3 minutes)
 	let timerInterval: number;
 
 	const startTimer = () => {
@@ -24,6 +26,10 @@
 		stopTimer();
 	});
 
+	function restartTimer() {
+		timeLeft = startFrom;
+	}
+
 	function formatTime(seconds: number) {
 		const minutes = Math.floor(seconds / 60);
 		const remainingSeconds = seconds % 60;
@@ -31,14 +37,13 @@
 	}
 </script>
 
-<div>
+<button on:click={restartTimer}>
 	{formatTime(timeLeft)}
-</div>
+</button>
 
 <style>
-	div {
-		padding: 1rem;
-		font-size: 3rem;
-		color: var(--color-theme-1);
+	button {
+		padding: 1rem 3rem;
+		font-size: 2rem;
 	}
 </style>

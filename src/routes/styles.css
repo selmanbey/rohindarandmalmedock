@@ -6,8 +6,8 @@
 	--color-bg-0: rgb(202, 216, 228);
 	--color-bg-1: hsl(209, 36%, 86%);
 	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #DD5746;
-	--color-theme-2: #4793AF;
+	--color-theme-1: #dd5746;
+	--color-theme-2: #4793af;
 	--color-text: rgba(0, 0, 0, 0.7);
 	--font-1: 'Josefin Slab', serif;
 	--column-width: 42rem;
@@ -68,6 +68,7 @@ pre {
 }
 
 input,
+textarea,
 button {
 	font-size: inherit;
 	font-family: inherit;
@@ -84,6 +85,17 @@ button {
 button:hover {
 	background-color: rgb(50, 50, 50);
 	color: white;
+}
+
+button:disabled {
+	color: gray;
+	border-color: gray;
+	cursor: not-allowed;
+}
+
+button:disabled:hover {
+	background-color: transparent;
+	color: gray;
 }
 
 button:focus:not(:focus-visible) {

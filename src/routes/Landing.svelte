@@ -1,6 +1,7 @@
 <script>
 	import Gameplay from './Gameplay.svelte';
-	import { gameStage, showGameplay } from './stores';
+	import { act } from '../stores/acts';
+	import { showHowToPlay } from '../stores/toggles';
 </script>
 
 <section>
@@ -9,10 +10,10 @@
 	<p>Who is Rohindar? What's his beef with Malmedock?</p>
 
 	<div class="how-to">
-		<button on:click={() => ($showGameplay = true)}>How To Play</button>
+		<button on:click={() => ($showHowToPlay = true)}>How To Play</button>
 	</div>
 
-	<button class="start-button" on:click={() => ($gameStage = 'SELECTION')}>Start</button>
+	<button class="start-button" on:click={() => act.set('OVERTURE')}>Start</button>
 
 	<Gameplay />
 </section>
@@ -27,12 +28,18 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+		padding: 1rem;
 	}
 
 	.title {
 		font-family: 'Josefin Slab', serif;
 		font-size: 6rem;
 		margin: 1rem;
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
 	}
 
 	.how-to {
@@ -41,12 +48,18 @@
 		right: 1rem;
 	}
 
-	.start-button {
-		padding: 1rem 2rem;
-		margin-top: 2rem;
-	}
-
 	.how-to button {
 		border: none;
+	}
+
+	.start-button {
+		padding: 1rem 2rem;
+		margin-top: 3rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		.title {
+			font-size: 4rem;
+		}
 	}
 </style>

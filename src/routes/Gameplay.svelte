@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { showGameplay } from './stores';
+	import { showHowToPlay } from "../stores/toggles";
+
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	role="button"
 	tabindex="0"
-	class={$showGameplay ? 'gameplay show' : 'gameplay'}
-	on:click={() => ($showGameplay = false)}
+	class={$showHowToPlay ? 'gameplay show' : 'gameplay'}
+	on:click={() => ($showHowToPlay = false)}
 >
 	R&M is a social game that requires at least 3 people to play, but ideally played with 5 or more.
 	<br />
@@ -94,11 +95,6 @@
 		background-color: white;
 		border-left: 1px solid black;
 		overflow: auto;
-	}
-
-	button {
-		border: none;
-		display: block;
 	}
 
 	.show {
